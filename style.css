@@ -129,3 +129,10 @@
   .quiz-app .results span.perfect {
     color: #0075ff;
   }
+
+@media screen and (max-width: 768px) {
+  /* Styles for screens up to 768 pixels wide */
+ .quiz-app {
+    width: auto;
+    }
+}
