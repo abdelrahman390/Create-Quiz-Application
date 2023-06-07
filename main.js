@@ -78,7 +78,7 @@ function getQuestions() {
                 // clear countDown duration
                 clearInterval(countdownInterval)
                 // stard countDown duration 
-                countdown(3, qustionsCount)
+                countdown(15, qustionsCount)
             }
         }
       }
