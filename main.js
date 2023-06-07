@@ -58,11 +58,13 @@ function getQuestions() {
                         finalResultSpans.innerHTML = 'Bad'
                         finalResultSpans.className = "bad"
                         finalResult.innerHTML = ` result is ${resultOfRightQustions} from ${qustionsCount}`
-                    } else if (resultOfRightQustions >= 4 && resultOfRightQustions < 6) {
+                    }  
+                    if (resultOfRightQustions >= 4 && resultOfRightQustions <= 6) {
                         finalResultSpans.innerHTML = 'Good'
                         finalResultSpans.className = "good"
                         finalResult.innerHTML = ` result is ${resultOfRightQustions} from ${qustionsCount}`
-                    } else if (resultOfRightQustions > 6 ) {
+                    }  
+                    if (resultOfRightQustions > 6 ) {
                         finalResultSpans.innerHTML = 'perfect'
                         finalResultSpans.className = "perfect"
                         finalResult.innerHTML = ` result is ${resultOfRightQustions} from ${qustionsCount}`
