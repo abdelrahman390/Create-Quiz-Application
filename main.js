@@ -24,7 +24,7 @@ function getQuestions() {
         let qustionsCount = jsonData.length
         allQustionsNumber = qustionsCount
         // stard countDown duration 
-        countdown(3, qustionsCount)
+        countdown(15, qustionsCount)
 
         bulletsCount(qustionsCount);
 
