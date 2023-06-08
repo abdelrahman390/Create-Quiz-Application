@@ -8,8 +8,12 @@ let finalResult = document.querySelector(".results h3");
 let finalResultSpans = document.querySelector(".results span");
 let spanSelectAll = document.querySelectorAll(".quiz-app .bullets .spans span");
 let repeatExamButton = document.querySelector(".quiz-app .results button ")
+let mainDivOfWrongQustion = document.querySelector(".quiz-app .wront_qustion") 
 let allQustionsNumber = 0
 let resultOfRightQustions = 0
+let numerOfWrongQustion = []
+let wrongQustionChosen = []
+
 let chosenAnswer = []
 
 
@@ -24,7 +28,7 @@ function getQuestions() {
         let qustionsCount = jsonData.length
         allQustionsNumber = qustionsCount
         // stard countDown duration 
-        countdown(15, qustionsCount)
+        countdown(3, qustionsCount)
 
         bulletsCount(qustionsCount);
 
@@ -38,7 +42,7 @@ function getQuestions() {
                 let rightAnswer = jsonData[curentQustionNum].right_answer
                 // console.log(rightAnswer)
 
-                checkAnswer(rightAnswer)
+                checkAnswer(rightAnswer, curentQustionNum)
 
                 curentQustionNum++
 
@@ -74,13 +78,58 @@ function getQuestions() {
                     repeatExamButton.onclick = () =>{
                         location.reload()
                     }
+
+                    // console.log(wrongQustionChosen)
+// console.log(numerOfWrongQustion)
+// console.log(resultOfRightQustions)
+// console.log(qustionsCount)
+
+                    if (!(wrongQustionChosen.length === 0)){
+                        
+                        mainDivOfWrongQustion.style.display = "block"
+
+        // console.log(qustionsCount - resultOfRightQustions)
+        // console.log(wrongQustionChosen.length)
+
+                        for(let i = 0; i < wrongQustionChosen.length; i++){
+                            
+                            let mainDiv = document.createElement("div")
+                            mainDivOfWrongQustion.appendChild(mainDiv)
+    
+                            let QustionTitle = document.createElement("h1")
+                            let QustionTitleText = document.createTextNode(`Qustion :`)
+                            let QustionTitleSpan = document.createElement("span")
+                            let QustionTitleTextSpan = document.createTextNode(`${jsonData[numerOfWrongQustion[i]].title}`)
+                            QustionTitle.appendChild(QustionTitleText)
+                            mainDiv.appendChild(QustionTitle)
+                            QustionTitleSpan.appendChild(QustionTitleTextSpan)
+                            mainDiv.appendChild(QustionTitleSpan)
+
+
+                            let RightQustion = document.createElement("h3")
+                            let RightQustionText = document.createTextNode(`Right Qustion : ${jsonData[numerOfWrongQustion[i]].right_answer}`)
+                            RightQustion.className = "Right"
+                            RightQustion.appendChild(RightQustionText)
+                            mainDiv.appendChild(RightQustion)
+
+                            let wrongQustion = document.createElement("h3")
+                            let wrongQustionText = document.createTextNode(`Your Qustion : ${wrongQustionChosen[i]}`)
+                            wrongQustion.className = "wrong"
+                            wrongQustion.appendChild(wrongQustionText)
+                            mainDiv.appendChild(wrongQustion)
+
+
+                        }
+                    }
+
+
                 }
                 handelBullets(curentQustionNum)
 
                 // clear countDown duration
                 clearInterval(countdownInterval)
                 // stard countDown duration 
-                countdown(15, qustionsCount)
+                countdown(3, qustionsCount)
             }
         }
       }
@@ -163,7 +212,7 @@ function qustionData(obj) {
     }
 }
 
-function checkAnswer(rightAnswer){
+function checkAnswer(rightAnswer, qurrentQustion){
 
 for(let i = 0; i < 4; i++){
 
@@ -173,8 +222,14 @@ for(let i = 0; i < 4; i++){
 
         if(chosenAnswer === rightAnswer){
             resultOfRightQustions++
-            console.log("yes")
             }
+
+            if(!(chosenAnswer === rightAnswer)){
+
+                numerOfWrongQustion.push(qurrentQustion)
+                
+                }
+                wrongQustionChosen.push(chosenAnswer)
         }
     }
 }
