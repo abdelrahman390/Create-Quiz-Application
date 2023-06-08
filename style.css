@@ -174,5 +174,12 @@
       .quiz-app .wront_qustion {
         font-size: 10px;
     }
+    .quiz-app .wront_qustion div {
+      padding: 30px 20px;
+  }
+  .quiz-app .wront_qustion div {
+    font-size: 13px;
+  }
+
   }
   
