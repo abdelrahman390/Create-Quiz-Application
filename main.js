@@ -28,7 +28,7 @@ function getQuestions() {
         let qustionsCount = jsonData.length
         allQustionsNumber = qustionsCount
         // stard countDown duration 
-        countdown(3, qustionsCount)
+        countdown(15, qustionsCount)
 
         bulletsCount(qustionsCount);
 
@@ -88,8 +88,6 @@ function getQuestions() {
                         
                         mainDivOfWrongQustion.style.display = "block"
 
-        // console.log(qustionsCount - resultOfRightQustions)
-        // console.log(wrongQustionChosen.length)
 
                         for(let i = 0; i < wrongQustionChosen.length; i++){
                             
@@ -97,7 +95,7 @@ function getQuestions() {
                             mainDivOfWrongQustion.appendChild(mainDiv)
     
                             let QustionTitle = document.createElement("h1")
-                            let QustionTitleText = document.createTextNode(`Qustion :`)
+                            let QustionTitleText = document.createTextNode(`Qustion ${numerOfWrongQustion[i] + 1}:`)
                             let QustionTitleSpan = document.createElement("span")
                             let QustionTitleTextSpan = document.createTextNode(`${jsonData[numerOfWrongQustion[i]].title}`)
                             QustionTitle.appendChild(QustionTitleText)
@@ -129,7 +127,7 @@ function getQuestions() {
                 // clear countDown duration
                 clearInterval(countdownInterval)
                 // stard countDown duration 
-                countdown(3, qustionsCount)
+                countdown(15, qustionsCount)
             }
         }
       }
